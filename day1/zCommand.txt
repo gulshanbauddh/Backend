@@ -1,0 +1,9 @@
+#1
+npm i -g nodemon
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+#2
+"type": "commonjs",
+
+#3
+npm init -y
