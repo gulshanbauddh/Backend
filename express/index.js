@@ -7,4 +7,4 @@ app.get("/",(req, res)=>{
 app.get("/news",(req, res)=>{
   res.send({status:1, msg:"NEWS Page API" })
 })
-app.listen("8001")
+app.listen("8000")
