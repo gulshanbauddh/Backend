@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadratic Equation:</title>
+</head>
+<body>
+  <h2>Quadratic Equation:</h2>
+  <script>
+    let a=parseInt(prompt("Enter value of a:"));
+    let b=parseInt(prompt("Enter value of b:"));
+    let c=parseInt(prompt("Enter value of c:"));
+    document.write("Value of a = "+a+" , b = "+ b+" , c = "+c);
+    // calculate Discriminant:
+    let d=(b*b)-(4*a*c);
+    // calculate and Display roots:
+    if(d>0){
+      let root1=((-b)+Math.sqrt(d))/(2*a);
+      let root2=((-b)-Math.sqrt(d))/(2*a);
+      document.write("<br>Roots are Real and Distinct:");
+      document.write("<br>Root 1: "+root1.toFixed(2)+"<br>Root 2: "+root2.toFixed(2));
+    } else if(d<0){
+      let real=-b/(2*a);
+      let imgPart=Math.sqrt(-d)/(2*a);
+      document.write("<br>Roots are Imagnary and Distinct:");
+      document.write("<br>Root 1: "+real.toFixed(2)+" + "+ imgPart.toFixed(2)+ " i");
+      document.write("<br>Root 2: "+real.toFixed(2)+" - "+ imgPart.toFixed(2)+ " i");
+    } else{
+      let root=(-b)/(2*a);
+      document.write("<br>Roots is Real and Same:");
+      document.write("<br>Root : "+root.toFixed(2));
+
+    }
+  </script>
+</body>
+</html>
