@@ -20,7 +20,7 @@ app.post("/login", (req, res) => {
     status: 1,
     msg: "Login API",
     dataData: req.body,
-    queryData:req.query
+    queryData: req.query,
   });
 });
 
