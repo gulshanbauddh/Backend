@@ -1,42 +1,45 @@
 let express = require("express");
+const { checkToken } = require("./checkTokenMiddleware");
+require("dotenv").config();
 let app = express();
 app.use(express.json());
+
 // Midleware
-let myToken = "12345";
+// let myToken = "12345";
 let myPass = "12345g";
-let checkToken = (req, res, next) => {
-  console.log("Welcome");
-  if (req.query.token == "" || req.query.token == undefined) {
-    return res.send({
-      status: 0,
-      msg: "Plese fill token !",
-    });
-  } else if (req.query.token != myToken) {
-    return res.send({
-      status: 0,
-      msg: "Please fill correct token !",
-    });
-  }
-  next();
-};
+// let checkToken = (req, res, next) => {
+//   console.log("Welcome");
+//   if (req.query.token == "" || req.query.token == undefined) {
+//     return res.send({
+//       status: 0,
+//       msg: "Plese fill token !",
+//     });
+//   } else if (req.query.token != myToken) {
+//     return res.send({
+//       status: 0,
+//       msg: "Please fill correct token !",
+//     });
+//   }
+//   next();
+// };
 
-app.use(checkToken); // Midleware
+// app.use(checkToken); // Midleware
 
-app.use((req, res, next11) => {
-  if (req.query.pass == "" || req.query.pass == undefined) {
-    return res.send({
-      status: 0,
-      msg: "Please fill password",
-    });
-  } else if (req.query.pass != myPass) {
-    return res.send({
-      status: 0,
-      msg: "Please Fill correct password !",
-    });
-  }
-  next11();
-});
-
+// app.use((req, res, next11) => {
+//   if (req.query.pass == "" || req.query.pass == undefined) {
+//     return res.send({
+//       status: 0,
+//       msg: "Please fill password",
+//     });
+//   } else if (req.query.pass != myPass) {
+//     return res.send({
+//       status: 0,
+//       msg: "Please Fill correct password !",
+//     });
+//   }
+//   next11();
+// });
+app.use(checkToken);
 app.get("/", (req, res) => {
   res.send({
     status: 1,
@@ -44,7 +47,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/news", (req, res) => {
+app.get("/news", checkToken, (req, res) => {
   res.send({
     status: 1,
     msg: "News",
